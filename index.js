@@ -26,7 +26,7 @@ async function setup() {
         data = await response.json();
         start();
     } catch (error) {
-        console.error('Could not fetch data:', error);
+        alert('Could not fetch data:', error);
         // Display an error message to the user on the page
         document.body.innerHTML = '<h1>Error: Could not load game data. Please check the console.</h1>';
     }
@@ -88,11 +88,11 @@ function start() {
 
     // Check if the weapon was found
     if (!weaponData) {
-        console.error(`Could not find weapon with ID: ${weaponID}`);
+        alert(`Could not find weapon with ID: ${weaponID}`);
         return; // Stop execution if data is invalid
     }
     
-    console.log("Game started. The weapon to guess is:", weaponData.name);
+    alert("Game started. The weapon to guess is:", weaponData.name);
     // You can make an initial guess for testing if you like
     guess("Anchor");
 }
@@ -101,14 +101,14 @@ function guess(name) {
     const item = getItemByProperty("name", name);
 
     if (!item) {
-        console.error(`Item named "${name}" not found!`);
+        alert(`Item named "${name}" not found!`);
         document.getElementById("log").innerText = `Error: Item named "${name}" not found!`;
         return;
     }
 
     const id = item.id;
     if (guessed.includes(id)) {
-        console.warn(`You have already guessed "${name}"`);
+        alert(`You have already guessed "${name}"`);
         return;
     }
     
@@ -118,7 +118,7 @@ function guess(name) {
 
     // Check for a win
     if (id === weaponID) {
-        console.log("Congratulations! You guessed correctly!");
+        alert("Congratulations! You guessed correctly!");
         document.getElementById("log").innerText += "\n\nCongratulations! You win!";
     }
 }

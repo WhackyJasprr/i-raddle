@@ -77,16 +77,17 @@ function start() {
         return; // Stop execution if data is invalid
     }
     
-    alert("Game started. The weapon to guess is:", weaponData.name);
+    alert(`Game started. The weapon to guess is:, ${weaponData["name"]}`);
     // You can make an initial guess for testing if you like
 }
 
 function guess(name) {
     const item = getItemByProperty("name", name);
+    alert(`item id is ${item.id}`)
 
     if (!item) {
         alert(`Item named "${name}" not found!`);
-        document.getElementById("log").innerText = `Error: Item named "${name}" not found!`;
+        // document.getElementById("log").innerText = `Error: Item named "${name}" not found!`;
         return;
     }
 
@@ -98,12 +99,12 @@ function guess(name) {
     
     guessed.push(id);
     const comped = compareItems(weaponData, item);
-    document.getElementById("log").innerText = JSON.stringify(comped, null, 2); // Pretty print JSON
+    document.getElementById("log").innerText += JSON.stringify(comped, null, 2); // Pretty print JSON
 
     // Check for a win
-    if (id === weaponID) {
+    if (id == weaponID) {
         alert("Congratulations! You guessed correctly!");
-        document.getElementById("log").innerText += "\n\nCongratulations! You win!";
+        document.getElementById("log").innerText = "\n\nCongratulations! You win!";
     }
 }
 

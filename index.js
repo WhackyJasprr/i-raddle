@@ -32,8 +32,7 @@ async function setup() {
     }
 }
 // Automatically start the setup process
-alert("hi")
-// setup();
+setup();
 
 function getRandomItemID() {
     const randomIndex = Math.floor(Math.random() * IDS.length);
@@ -94,7 +93,6 @@ function start() {
     
     alert("Game started. The weapon to guess is:", weaponData.name);
     // You can make an initial guess for testing if you like
-    guess("Anchor");
 }
 
 function guess(name) {
@@ -129,7 +127,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const guessInput = document.getElementById('guessInput');
 
     guessButton.addEventListener('click', () => {
-        alert("clicked")
         const guessName = guessInput.value.trim();
         if (guessName) {
             guess(guessName);

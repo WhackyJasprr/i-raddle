@@ -60,7 +60,7 @@ function compareItems(correctItem, guessedItem) {
 
 // Corrected spelling from 'Propety' to 'Property'
 function getItemByProperty(prop, value) {
-    return WEAPONDATA.find((item) => item[prop] === value);
+    return WEAPONDATA.weapons.find((item) => item[prop] == value);
 }
 
 function start() {

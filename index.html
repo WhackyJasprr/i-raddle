@@ -4,17 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I-RADDLE</title>
-    <link href="styles.css">
-</head>
+    <link rel="stylesheet" type="text/css" href="styles.css"></head>
 <body>
     <h1>I-Raddle</h1>
     
     <input type="text" id="guessInput" placeholder="Enter weapon name...">
     <button id="guessButton">Guess</button>
 
-    <ul></ul>
+    <div class="mx-auto w-80 md:w-full overflow-auto">
+        <div class="mt-4 mx-auto w-fit bg-black/60 flex gap-1 justify-center items-center text-center" transition:fade>
+            <div class="w-20" id="I">Item</div>
+            <div class="w-20" id="T">Damage Type</div>
+            <div class="w-20" id="D">Damage</div>
+            <div class="w-20" id="K">Knockback</div>
+            <div class="w-20" id="S">Speed</div>
+            <div class="w-20" id="R">Rarity</div>
+            <div class="w-20" id="A">Autoswing</div>
+            <div class="w-20" id="M">Material</div>
+            <div class="w-20" id="O">Obtained</div>
+        </div>
+    </div>
 
-    <pre id="log"></pre>
+    <pre id="log" style="visibility: hidden;"></pre>
     <script src="index.js"></script>
 </body>
 </html>

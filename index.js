@@ -67,9 +67,9 @@ function getItemByProperty(prop, value) {
 function start() {
     // Corrected function call from 'getRandomItem' to 'getRandomItemID'
     weaponID = getRandomItemID();
-    alert(weaponID)
+    // alert(weaponID)
     weaponData = getItemByProperty("id", weaponID);
-    alert(JSON.stringify(weaponData))
+    // alert(JSON.stringify(weaponData))
 
     // Check if the weapon was found
     if (!weaponData) {
@@ -77,13 +77,13 @@ function start() {
         return; // Stop execution if data is invalid
     }
     
-    alert(`Game started. The weapon to guess is:, ${weaponData["name"]}`);
+    // alert(`Game started. The weapon to guess is:, ${weaponData["name"]}`);
     // You can make an initial guess for testing if you like
 }
 
 function guess(name) {
     const item = getItemByProperty("name", name);
-    alert(`item id is ${item.id}`)
+    // alert(`item id is ${item.id}`)
 
     if (!item) {
         alert(`Item named "${name}" not found!`);
@@ -106,6 +106,7 @@ function guess(name) {
         alert("Congratulations! You guessed correctly!");
         document.getElementById("log").innerText = "\n\nCongratulations! You win!";
     }
+    renderNextItem(item,comped)
 }
 
 // Add this to the end of your index.js file
@@ -128,3 +129,30 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 });
+
+function renderNextItem(item,comped)
+{
+    const ITEMELEMENT = document.getElementById('I')
+    const DAMAGETYPEELEMENT = document.getElementById('T')
+    const DAMAGEELEMENT = document.getElementById('D')
+    const KNOCKBACKELEMENT = document.getElementById('K')
+    const SPEEDELEMENT = document.getElementById('S')
+    const RARITYELEMENT = document.getElementById('R')
+    const AUTOSWINGELEMENT = document.getElementById('A')
+    const MATERIALELEMENT = document.getElementById('M')
+    const OBTAINEDELEMENT = document.getElementById('O')
+
+    ITEMELEMENT.innerHTML += `<p>${item.name}</p>`
+    DAMAGETYPEELEMENT.innerHTML += `<p>${comped.damageType ? item.damageType : `not ${item.damageType}`}</p>`
+    DAMAGEELEMENT.innerHTML += `<p>${comped.damage} ${item.damage}</p>`
+    KNOCKBACKELEMENT.innerHTML += `<p>${comped.knockback} ${item.knockback}</p>`
+    SPEEDELEMENT.innerHTML += `<p>${comped.speed} ${item.speed}</p>`
+    RARITYELEMENT.innerHTML += `<p>${comped.rarity} ${item.rarity}</p>`
+
+    AUTOSWINGELEMENT.innerHTML += `<p>${comped.autoswing ? item.autoswing : `not ${item.autoswing}`}</p>`
+    MATERIALELEMENT.innerHTML += `<p>${comped.material ? item.material : `not ${item.material}`}</p>`
+
+    OBTAINEDELEMENT.innerHTML += `<p>${item.obtained} ${comped.obtained}</p>`
+}
+
+//{ "id": "5147", "name": "Wand of Frosting", "autoswing": false, "damage": "15", "damageType": "Magic", "knockback": "No knockback", "speed": "Average", "tooltip": [ "Shoots a little frost" ], "rarity": "1", "sell": "15 Silver Coins", "obtained": [ "Crafting" ], "material": false }

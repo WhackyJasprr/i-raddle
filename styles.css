@@ -40,16 +40,37 @@ button {
     margin-top: 1rem;
 }
 
+/* This is the correct rule for the TABLE layout */
 .stat-row {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
     margin: 4px auto;
-    width: fit-content;
     background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    gap: 4px;
-    text-align: center;
 }
 
+/* This is the correct rule for the TABLE CELLS (th and td) */
 .stat-cell {
-    width: 100px;
-    padding: 8px 4px;
+    padding: 8px;
+    text-align: center;
+    border-right: 1px solid #333;
+    overflow-wrap: break-word; /* Good to keep for long words */
+}
+
+.stat-cell:last-child {
+    border-right: none;
+}
+
+.square-image-container {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+
+.square-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }

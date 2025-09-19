@@ -32,51 +32,5 @@
         </table>
     </div>
     <script src="index.js"></script>
-    <script>
-        // --- SEARCH/FILTER SCRIPT ---
-        const searchInput = document.getElementById("guessInput");
-        const searchMenu = document.getElementById("menu");
-        const weapons = ITEMSDATA.weapons;
-
-        // 1. Populate the dropdown list with all weapon names
-        weapons.forEach(item => {
-            let li = document.createElement('li');
-            li.textContent = item.name;
-            let img = document.createElement('img')
-            img.src = `static/images/${item.id}.png`;
-            li.addEventListener('click', () => {
-                searchInput.value = li.textContent; // Fill input on click
-                searchMenu.style.display = 'none'; // Hide menu
-            });
-            li.appendChild(img)
-            searchMenu.appendChild(li);
-        });
-
-        // 2. Filter the list on every keypress
-        const searchFunction = () => {
-            const filter = searchInput.value.toUpperCase();
-            const li_items = searchMenu.getElementsByTagName("li");
-            let hasVisibleItems = false;
-
-            if (filter.length === 0) {
-                searchMenu.style.display = 'none';
-                return;
-            }
-
-            for (let i = 0; i < li_items.length; i++) {
-                if (li_items[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-                    li_items[i].style.display = "";
-                    hasVisibleItems = true;
-                } else {
-                    li_items[i].style.display = "none";
-                }
-            }
-            
-            searchMenu.style.display = hasVisibleItems ? 'block' : 'none';
-        };
-
-        // 3. Attach the search function to the input box
-        searchInput.addEventListener('keyup', searchFunction);
-    </script>
 </body>
 </html>

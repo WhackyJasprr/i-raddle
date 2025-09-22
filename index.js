@@ -140,7 +140,6 @@ function start() {
         alert(`Could not find weapon with ID: ${weaponID}`);
         return; // Stop execution if data is invalid
     }
-    searchSetup()
     // alert(`Game started. The weapon to guess is:, ${weaponData["name"]}`);
     // You can make an initial guess for testing if you like
 }
@@ -285,6 +284,7 @@ function getColor(type,comped)
 // --- SEARCH/FILTER SCRIPT ---
 const searchInput = document.getElementById("guessInput");
 const searchMenu = document.getElementById("menu");
+searchSetup();
 
 // 1. Populate the dropdown list with all weapon names
 function searchSetup()

@@ -12,14 +12,31 @@
     <button id="Start" title="Start Game">Start</button>
     <input type="checkbox" id="showSeed" title="Show Seed Input">
     <input type="text" style="visibility:hidden;" id="seedInput" placeholder="Seed" title="Seed Input">
-    <p id="seedUsed"></p>
 
 
     <input type="text" id="guessInput" placeholder="Enter weapon name...">    
     <button id="guessButton">Guess</button>
     <ul id="menu"></ul>
     
-    <p id="TIPS"></p>
+    <div class="tab">
+        <button class="tablinks" onclick="openTIP(event, 'SP')">Sell Price</button>
+        <button class="tablinks" onclick="openTIP(event, 'TT')">Tooltip</button>
+        <button class="tablinks" onclick="openTIP(event, 'IM')">Picture</button>
+    </div>
+
+    <div id="SP" class="tabcontent">
+        <p id="sp"></p>
+    </div>
+
+    <div id="TT" class="tabcontent">
+        <p id="tt"></p>
+    </div>
+
+    <div id="IM" class="tabcontent">
+        <img id="im">
+    </div>
+
+      
 
     <div class="results-container" id="resultsContainer">
         <table class="stat-row" id="resultsTable">

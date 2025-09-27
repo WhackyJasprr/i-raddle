@@ -51,10 +51,22 @@
         "#B428FF",
     ];
 
+    function SRAND(seed) {
+        let a = Number(seed);
+        let t = a += 0x6D2B79F5;
+        t = Math.imul(t ^ t >>> 15, t | 1);
+        t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+        t = (t ^ t >>> 14) >>> 0;
+        return t / 4294967296;
+      }
+
+    var Seed = 0
+
     start()
 
     function getRandomItemID() {
-        const randomIndex = Math.floor(Math.random() * IDS.length);
+        var r = SRAND(seed)
+        const randomIndex = Math.floor(r * IDS.length);
         return IDS[randomIndex];
     }
 
@@ -133,6 +145,15 @@
         
         if (localStorage.getItem('i-raddle-a') == null || localStorage.getItem('i-raddle-a') == "null")
         {
+            const SEED = document.getElementById('seedInput').innerText
+            if (SEED == '')
+            {
+                seed = Date.now()
+            }else{
+                seed = SEED
+                const SINP = document.getElementById('seedInput')
+                SINP.innerText = ''
+            }
             weaponID = getRandomItemID();
             weaponData = getItemByProperty("id", weaponID);
             localStorage.setItem('i-raddle-a',weaponID)
@@ -191,6 +212,9 @@
     document.addEventListener('DOMContentLoaded', (event) => {
         const guessButton = document.getElementById('guessButton');
         const guessInput = document.getElementById('guessInput');
+        const seedShow = document.getElementById('showSeed');
+        const seedInp = document.getElementById('seedInput')
+        const startButton = document.getElementById('Start')
         guessButton.addEventListener('click', () => {
             const guessName = guessInput.value.trim();
             if (guessName) {
@@ -204,6 +228,21 @@
             if (event.key === 'Enter') {
                 guessButton.click();
             }
+        });
+
+        seedShow.addEventListener('click',() => {
+            if (seedShow.checked)
+            {
+                seedInp.style.visibility = 'visible'
+            }else{
+                seedInp.style.visibility = 'hidden'
+            }
+        });
+
+        startButton.addEventListener('click', () => {
+            localStorage.setItem('i-raddle-g',JSON.stringify({"g":[]}))
+            localStorage.setItem('i-raddle-a',null)
+            location.reload()
         });
     });
 

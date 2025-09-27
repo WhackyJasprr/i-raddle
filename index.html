@@ -9,10 +9,18 @@
 <body>
     <h1>I-Raddle</h1>
 
+    <button id="Start" title="Start Game">Start</button>
+    <input type="checkbox" id="showSeed" title="Show Seed Input">
+    <input type="text" style="visibility:hidden;" id="seedInput" placeholder="Seed" title="Seed Input">
+    <p id="seedUsed"></p>
+
+
     <input type="text" id="guessInput" placeholder="Enter weapon name...">    
     <button id="guessButton">Guess</button>
     <ul id="menu"></ul>
     
+    <p id="TIPS"></p>
+
     <div class="results-container" id="resultsContainer">
         <table class="stat-row" id="resultsTable">
             <thead>
